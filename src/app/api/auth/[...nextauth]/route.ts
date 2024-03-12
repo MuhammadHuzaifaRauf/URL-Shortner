@@ -6,8 +6,6 @@ const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      // "474438178423-ht5ba48fp078he7kapa086m96oms226k.apps.googleusercontent.com",
-      // clientSecret: "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",
     }),
   ],
   callbacks: {
@@ -43,4 +41,5 @@ const authOptions = {
 };
 
 const handler = NextAuth(authOptions);
+
 export { handler as GET, handler as POST };
