@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import look from "../../../../public/assets/images/Linkly.png";
-import link from "../../../../public/assets/images/Look.png";
+import bell from "../../../../public/assets/images/Bell.png";
 
 export default function EditPage() {
   return (
@@ -10,54 +10,37 @@ export default function EditPage() {
         <div className="py-8 px-6">
           <Image src={look} alt="" />
         </div>
-        <div className=" flex flex-row py-8 gap-6">
-          <button className="text-white w-[90px] h-[46px] flex items-center gap-4 shadow-md mb-5 border rounded-[48px] border-[#353C4A] bg-[#181E29] pl-5 mt-1">
-            Login
+        <div className=" flex flex-row py-8 px-8 gap-6">
+          <button className="text-white w-[150px] h-[46px] flex items-center gap-4 shadow-md mb-5 border rounded-[48px] border-[#353C4A] bg-[#181E29] pl-9 mt-1 ">
+            Welcome
           </button>
-          <button className="w-[140px] sm:w-[140px]  md:w-[168px] bg-[#144EE3] h-[50px]  border rounded-[48px] border-[#144EE3] text-white text-[13px] font-semibold cursor-pointer px-6 py-2 relative">
-            Register Now
+          <button className="w-[40px] sm:w-[40px]  md:w-[68px] bg-[#144EE3] h-[50px]  border rounded-[88px] border-[#144EE3] shadow-[#708bcd] text-white text-[13px] font-semibold cursor-pointer px-6 py-2 relative">
+            <Image src={bell} alt="" className="w-[20px] h-[20px]" />
           </button>
         </div>
       </div>
 
-      <div className="py-8 flex flex-row justify-center items-center">
-        <Image
-          className="w-[350px] sm:w-[450px]  md:w-[550px]"
-          src={link}
-          alt=""
-        />
-      </div>
-      <div className="flex flex-row justify-center items-center">
-        <p className="font-extralight flex flex-wrap w-[390px] sm:w-[480px] md:w-[634px] text-[16px] text-[#C9CED6]">
-          Linkly is an efficient and easy-to-use URL shortening service that
-          streamlines your online experience.
-        </p>
-      </div>
-      <div className="max-w-[659px] mx-auto max-h-[76px] my-[46px] border-[4px] rounded-[48px] border-[#353C4A] bg-[#181E29] items-center flex flex-row justify-center px-8">
+      <div className="max-w-[859px] mx-auto max-h-[76px] my-[46px] mt-[100px]  border-[4px] rounded-[48px] border-[#353C4A] bg-[#181E29] items-center flex flex-row justify-center px-8">
         <input
           type="text"
-          placeholder="Enter your link here"
-          className="w-full sm:[450px] outline-none bg-[#181E29] h-[55px] rounded-[48px] text-white  py-2"
+          placeholder="Enter the link to shorten here"
+          className="w-full sm:[450px] outline-none bg-[#181E29] h-[50px] rounded-[48px] text-white  py-2"
         />
-        <button className="w-[178px] bg-[#144EE3] h-[50px]  border rounded-[48px] border-[#144EE3] text-white text-[10px] font-semibold cursor-pointer px-6 py-2 relative">
-          Shorten Now!
+      </div>
+      <div className="max-w-[859px] mx-auto max-h-[70px] my-[46px] border-[4px] rounded-[48px] border-[#353C4A] bg-[#181E29] items-center flex flex-row justify-center px-8">
+        <input
+          type="text"
+          placeholder="Enter custom slug"
+          className="w-full sm:[450px] outline-none bg-[#181E29] h-[50px] rounded-[48px] text-white  py-2"
+        />
+        <button className=" sm:w-[176px] md:w-[176px] bg-[#144EE3] h-[50px]  border rounded-[48px] border-[#144EE3] text-white text-[14px] font-semibold cursor-pointer   relative">
+          Auto Generate
         </button>
       </div>
-
-      <div className="max-w-[659px] mx-auto max-h-[76px] my-[46px]  items-center flex flex-row justify-center px-8">
-        <label className="inline-flex items-center cursor-pointer">
-          <input type="checkbox" value="" className="sr-only peer" />
-          <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-          <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Auto paste from clipboard
-          </span>
-        </label>
-      </div>
-      <div className="max-w-[659px] mx-auto max-h-[76px] my-[46px]  items-center flex flex-row justify-center px-8">
-        <p className="text-white font-extralight text-[14px]">
-          You can create <span className="text-[#e63946]">05</span> more links.
-          Register Now to enjoy Unlimited usage
-        </p>
+      <div className="flex flex-row justify-center items-center">
+        <button className="w-[140px] sm:w-[140px]  md:w-[200px] bg-[#144EE3] h-[50px]  border rounded-[48px] border-[#144EE3] text-white text-[13px] font-semibold cursor-pointer px-6 py-2 relative">
+          Shorten Now
+        </button>
       </div>
     </>
   );
