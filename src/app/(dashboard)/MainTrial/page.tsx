@@ -1,9 +1,27 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import look from "../../../../public/assets/images/Linkly.png";
 import link from "../../../../public/assets/images/Look.png";
+import arrow from "../../../../public/assets/images/Arrow.png";
 
 export default function MainTrial() {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 640);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const gaib = "hidden";
+
   return (
     <>
       <div className="w-full h-[120px] flex flex-row justify-between">
@@ -14,9 +32,11 @@ export default function MainTrial() {
           <button className="text-white w-[90px] h-[46px] flex items-center gap-4 shadow-md mb-5 border rounded-[48px] border-[#353C4A] bg-[#181E29] pl-5 mt-1">
             Login
           </button>
-          <button className="w-[140px] sm:w-[140px]  md:w-[168px] bg-[#144EE3] h-[50px]  border rounded-[48px] border-[#144EE3] text-white text-[13px] font-semibold cursor-pointer px-6 py-2 relative">
-            Register Now
-          </button>
+          <div className={`flex flex-col items-center ${gaib} msw:block`}>
+            <button className="w-[140px] bg-[#144EE3] h-[50px] border rounded-[48px] border-[#144EE3] text-white text-[13px] font-semibold cursor-pointer px-6 py-2 relative shadow-md hidden sm:block">
+              Register
+            </button>
+          </div>
         </div>
       </div>
 
@@ -33,15 +53,23 @@ export default function MainTrial() {
           streamlines your online experience.
         </p>
       </div>
-      <div className="max-w-[659px] mx-auto max-h-[76px] my-[46px] border-[4px] rounded-[48px] border-[#353C4A] bg-[#181E29] items-center flex flex-row justify-center px-8">
+      <div className="max-w-[659px] mx-auto max-h-[76px] my-[46px] border-[4px] rounded-[48px] border-[#353C4A] bg-[#181E29] items-center flex flex-row px-8">
         <input
           type="text"
           placeholder="Enter your link here"
-          className="w-full sm:[450px] outline-none bg-[#181E29] h-[55px] rounded-[48px] text-white  py-2"
+          className="w-full sm:w-[450px] outline-none bg-[#181E29] h-[55px] rounded-[48px] text-white py-2"
         />
-        <button className=" sm:w-[176px] md:w-[176px] bg-[#144EE3] h-[50px]  border rounded-[48px] border-[#144EE3] text-white text-[14px] font-semibold cursor-pointer px-6 py-2 relative">
-          Shorten Now!
-        </button>
+        {isSmallScreen ? (
+          <Image
+            src={arrow}
+            className="h-[116px] w-[156px] px-6 py-2 "
+            alt=""
+          />
+        ) : (
+          <button className=" w-[76px]  sm:w-[176px] md:w-[176px] bg-[#144EE3] h-[50px] border rounded-[48px] border-[#144EE3] text-white font-semibold cursor-pointer px-6 py-2 relative">
+            Shorten Now
+          </button>
+        )}
       </div>
 
       <div className="max-w-[659px] mx-auto max-h-[76px] my-[46px]  items-center flex flex-row justify-center px-8">
@@ -58,6 +86,9 @@ export default function MainTrial() {
           You can create <span className="text-[#e63946]">05</span> more links.
           Register Now to enjoy Unlimited usage
         </p>
+      </div>
+      <div className="flex flex-col items-center msw:hidden">
+        <p className="text-sm text-gray-500 mt-2 ">Explore More</p>
       </div>
     </>
   );
