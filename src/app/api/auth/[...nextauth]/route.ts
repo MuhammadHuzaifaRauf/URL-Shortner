@@ -1,13 +1,39 @@
+//@ts-nocheck
+import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 
-const authOptions = {
+export const authOptions: NextAuthOptions = {
+  session: {
+    strategy: "jwt",
+  },
+
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", placeholder: "Enter Email" },
+        password: { label: "Password", placeholder: "Enter Password" },
+      },
+      async authorize(credentials, req) {
+        if (!credentials || !credentials.email || credentials.password)
+          return null;
+        const user = users.find((item) => item.email === item.password);
+
+        if (user?.password === credentials.password) {
+          return user;
+        }
+        return null;
+      },
+    }),
   ],
+  secret: "charmusxyz",
+
   callbacks: {
     async signIn({ user, account }: any) {
       console.log("User", user);

@@ -1,0 +1,21 @@
+datasource db {
+    provider = "mongodb"
+    url      = "mongodb+srv://mhuzaifarauf13:11221122@cluster0.yfexpql.mongodb.net/nextaurl-shortnerth?retryWrites=true&w=majority&appName=Cluster0"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model User {
+    id             String    @id @default(auto()) @map("_id") @db.ObjectId
+    name           String?
+    email          String?   @unique
+    emailVerified  DateTime?
+    image          String?
+    hashedPassword String?
+    createdAt      DateTime  @default(now())
+    updatedAt      DateTime  @updatedAt
+    role           Role      @default(USER)
+
+}
